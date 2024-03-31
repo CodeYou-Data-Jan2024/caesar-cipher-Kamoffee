@@ -1,38 +1,33 @@
 # add your code here
-# Define a function
-def caesar (number_to_shift, text_low): 
-    # Checking to see if the user input is decimal and in range
-    if not number_to_shift.isdecimal() or not (0 <= int(number_to_shift) <= 25) :
-        print("You need to enter a number between 0 and 25!") 
-    else:
-        # set our variables
-        number_to_shift = int(number_to_shift)
-        alpha = "abcdefghijklmnopqrstuvwxyz"
-        new_alpha = list(alpha)
-        new_list = []
+# Define the caesar function
+def caesar (text_low):
+    new_sentence = "" 
+    number_to_shift = 5
+    alpha = "abcdefghijklmnopqrstuvwxyz"
 
-        for letters in text_low.lower():
-            # Check if the letters are in the alphabet
-            if letters in alpha:
-                index = alpha.find(letters.lower())
+    #Checking if the letter is in the sentence but with lowercase
+    for letter in text_low.lower():
+        # Check if the letters are in the alphabet
+        if letter in alpha:
+            index = alpha.find(letter)
             # Apply the shift of input
-                new_index = (index + number_to_shift) %  26
-                new_letters = new_alpha[new_index]
-                new_list.append(new_letters)
-            else:
-                # keep non - characters from the sentence
-                new_list.append(letters)
+            new_index = (index + number_to_shift) % 26
+            # Adding the new index to the sentence
+            new_sentence += alpha[new_index]
+        else:
+         # keep non - characters from the sentence
+            new_sentence += letter
 
-        new_text = ''.join(new_list)
-        return new_text
+    return new_sentence
+
 
 # Creating a main function to coordinate caesar function
 def main():
     # Asking for user input in our caesar variables
-    number_to_shift = input("Please enter a number of places to shift:") 
     text_low = input("Please enter a sentence: ")
-    cypher = caesar(number_to_shift, text_low)
-    print(cypher)
+    cypher = caesar(text_low)
+    # Sentence that is going to be printed when the function will be called
+    print("The encrypted sentence is: " + cypher)
 
-
+# Calling the main function
 main()
