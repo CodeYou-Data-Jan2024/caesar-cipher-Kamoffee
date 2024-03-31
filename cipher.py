@@ -1,24 +1,24 @@
 # add your code here
 # Define the caesar function
-def caesar (text_low):
-    new_sentence = "" 
-    number_to_shift = 5
+def caesar (sentence):
+    encrypted_sentence = "" 
+    encryption_key = 5
     alpha = "abcdefghijklmnopqrstuvwxyz"
 
-    #Checking if the letter is in the sentence but with lowercase
-    for letter in text_low.lower():
+    #Checking if the letter
+    for letter in sentence.lower():
         # Check if the letters are in the alphabet
         if letter in alpha:
             index = alpha.find(letter)
             # Apply the shift of input
-            new_index = (index + number_to_shift) % 26
+            new_index = (index + encryption_key) % 26
             # Adding the new index to the sentence
-            new_sentence += alpha[new_index]
+            encrypted_sentence += alpha[new_index]
         else:
          # keep non - characters from the sentence
-            new_sentence += letter
+            encrypted_sentence += letter
 
-    return new_sentence
+    return encrypted_sentence
 
 
 # Creating a main function to coordinate caesar function
